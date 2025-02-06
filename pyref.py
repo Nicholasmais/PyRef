@@ -14,7 +14,7 @@ def abre():
     global filename, line, a, dadosxy
     filename = askopenfilename(initialdir="/",
                                    title="Select A File",
-                                   filetype=(("csv files", "*.csv",),("txt files",".txt"), ("all files", "*.*")))
+                                   filetypes=(("csv files", "*.csv",),("txt files",".txt"), ("all files", "*.*")))
 
     btn2.config(state='active')
     btn.config(state='active')
@@ -75,9 +75,15 @@ def salvar():
 
 
 janela = Tk()
-janela.state("zoomed")
+janela.attributes("-zoomed", True)
 janela.title("PyRef v1.0")
-janela.iconbitmap("favicon.ico")
+from PIL import Image, ImageTk
+
+# Replace the iconbitmap line with this:
+icon = Image.open("favicon.ico")
+icon_photo = ImageTk.PhotoImage(icon)
+janela.wm_iconphoto(True, icon_photo)
+
 
 janela.minsize(500, 575)
 
